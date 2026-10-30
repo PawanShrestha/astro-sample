@@ -1,5 +1,5 @@
 ---
-
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -12,9 +12,29 @@
 		<title>{Astro.props.title}</title>
 	</head>
 	<body>
-        <main>
-            <h1>Welcome to Astro!</h1>
-            <slot />
-        </main>
+		<header class="site-header">
+			<div class="header-content">
+				<a class="site-brand" href="/" aria-label="Astro Site home">Astro Site</a>
+				<nav aria-label="Main navigation">
+					<a href="/" aria-current={Astro.url.pathname === "/" ? "page" : undefined}>Home</a>
+					<a href="/about" aria-current={Astro.url.pathname === "/about" ? "page" : undefined}>About</a>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="site-footer">
+			<div class="footer-content">
+				<p class="footer-brand">Astro Site</p>
+				<p class="footer-copyright">
+					&copy; {new Date().getFullYear()} Astro Site. All rights reserved.
+				</p>
+				<nav aria-label="Footer navigation">
+					<a href="/">Home</a>
+					<a href="/about">About</a>
+				</nav>
+			</div>
+		</footer>
 	</body>
 </html>
