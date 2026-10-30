@@ -17,6 +17,7 @@ import "../styles/global.css";
 				<a class="site-brand" href="/" aria-label="Astro Site home">Astro Site</a>
 				<nav aria-label="Main navigation">
 					<a href="/" aria-current={Astro.url.pathname === "/" ? "page" : undefined}>Home</a>
+					<a href="/blog" aria-current={Astro.url.pathname.startsWith("/blog") ? "page" : undefined}>Blog</a>
 					<a href="/about" aria-current={Astro.url.pathname === "/about" ? "page" : undefined}>About</a>
 				</nav>
 			</div>
@@ -32,9 +33,13 @@ import "../styles/global.css";
 				</p>
 				<nav aria-label="Footer navigation">
 					<a href="/">Home</a>
+					<a href="/blog">Blog</a>
 					<a href="/about">About</a>
 				</nav>
 			</div>
 		</footer>
+		<script>
+			import "../js/script.js";
+		</script>
 	</body>
 </html>

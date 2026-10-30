@@ -66,7 +66,8 @@ main {
 }
 
 .home-hero,
-.about-intro {
+.about-intro,
+.blog-heading {
 	padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem);
 	border: 1px solid #dbeafe;
 	border-radius: 1rem;
@@ -83,7 +84,9 @@ main {
 }
 
 .home-hero h1,
-.about-intro h1 {
+.about-intro h1,
+.blog-heading h1,
+.blog-article-header h1 {
 	max-width: 46rem;
 	margin: 0;
 	font-size: clamp(2.5rem, 7vw, 4.5rem);
@@ -92,7 +95,8 @@ main {
 }
 
 .hero-copy,
-.about-intro > p:last-child {
+.about-intro > p:last-child,
+.blog-heading > p:last-child {
 	max-width: 38rem;
 	margin: 1.25rem 0 1.75rem;
 	color: #475569;
@@ -125,8 +129,105 @@ main {
 }
 
 .home-highlights,
-.about-values {
+.about-values,
+.blog-archive {
 	padding: clamp(3rem, 7vw, 5rem) 0;
+}
+
+.blog-heading {
+	background: linear-gradient(135deg, #eff6ff, #ffffff 70%);
+}
+
+.blog-heading h1,
+.blog-article-header h1 {
+	max-width: 50rem;
+}
+
+.blog-archive {
+	display: grid;
+	gap: 1rem;
+}
+
+.blog-card {
+	padding: clamp(1.5rem, 4vw, 2rem);
+	border: 1px solid #e2e8f0;
+	border-radius: 0.75rem;
+	background: #ffffff;
+}
+
+.blog-meta {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin: 0 0 0.75rem;
+	color: #64748b;
+	font-size: 0.875rem;
+}
+
+.blog-card h2 {
+	margin: 0 0 0.5rem;
+	font-size: clamp(1.35rem, 3vw, 1.75rem);
+	letter-spacing: -0.025em;
+}
+
+.blog-card h2 a {
+	color: #172033;
+	text-decoration: none;
+}
+
+.blog-card h2 a:hover {
+	color: #2563eb;
+}
+
+.blog-card > p:not(.blog-meta) {
+	max-width: 44rem;
+	margin: 0 0 1.25rem;
+	color: #64748b;
+	line-height: 1.65;
+}
+
+.blog-article {
+	max-width: 52rem;
+	margin: 0 auto;
+	padding: clamp(1rem, 4vw, 2rem) 0;
+}
+
+.blog-back-link {
+	display: inline-block;
+	margin-bottom: 2rem;
+}
+
+.blog-article-header {
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.blog-article-header h1 {
+	font-size: clamp(2.25rem, 6vw, 3.75rem);
+}
+
+.blog-article-header .blog-meta {
+	margin: 1rem 0;
+}
+
+.blog-article-excerpt {
+	max-width: 42rem;
+	margin: 0;
+	color: #475569;
+	font-size: 1.2rem;
+	line-height: 1.7;
+}
+
+.article-content {
+	max-width: 42rem;
+	padding: 1.5rem 0 2rem;
+	color: #334155;
+	font-size: 1.0625rem;
+	line-height: 1.8;
+}
+
+.article-content p {
+	margin: 0 0 1.25rem;
 }
 
 .section-heading {

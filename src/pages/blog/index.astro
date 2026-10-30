@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { blogPosts } from "../../data/blogPosts.js";
+
+const posts = [...blogPosts].sort(
+	(first, second) => new Date(second.date).getTime() - new Date(first.date).getTime(),
+);
+const dateFormatter = new Intl.DateTimeFormat("en", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+	timeZone: "UTC",
+});
+---
+
+<BaseLayout title="Blog">
+	<section class="blog-heading">
+		<p class="eyebrow">From the blog</p>
+		<h1>Ideas, notes, and things we've learned.</h1>
+		<p>Short reads about thoughtful design, building for the web, and making room for new ideas.</p>
+	</section>
+
+	<section class="blog-archive" aria-label="Blog posts">
+		{
+			posts.map((post) => (
+				<article class="blog-card">
+					<p class="blog-meta">
+						<time datetime={post.date}>
+							{dateFormatter.format(new Date(`${post.date}T00:00:00Z`))}
+						</time>
+						<span aria-hidden="true">·</span>
+						<span>{post.category}</span>
+					</p>
+					<h2>
+						<a href={`/blog/${post.slug}`}>{post.title}</a>
+					</h2>
+					<p>{post.excerpt}</p>
+					<a class="text-link" href={`/blog/${post.slug}`}>
+						Read article <span aria-hidden="true">→</span>
+					</a>
+				</article>
+			))
+		}
+	</section>
+</BaseLayout>

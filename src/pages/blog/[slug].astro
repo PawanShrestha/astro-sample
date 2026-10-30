@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { blogPosts } from "../../data/blogPosts.js";
+
+export function getStaticPaths() {
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const dateFormatter = new Intl.DateTimeFormat("en", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+	timeZone: "UTC",
+});
+---
+
+<BaseLayout title={`${post.title} | Blog`}>
+	<article class="blog-article">
+		<a class="text-link blog-back-link" href="/blog">← All articles</a>
+		<header class="blog-article-header">
+			<p class="eyebrow">{post.category}</p>
+			<h1>{post.title}</h1>
+			<p class="blog-meta">
+				<time datetime={post.date}>
+					{dateFormatter.format(new Date(`${post.date}T00:00:00Z`))}
+				</time>
+			</p>
+			<p class="blog-article-excerpt">{post.excerpt}</p>
+		</header>
+		<div class="article-content">
+			{post.content.map((paragraph) => <p>{paragraph}</p>)}
+		</div>
+		<a class="text-link" href="/blog">Browse all articles <span aria-hidden="true">→</span></a>
+	</article>
+</BaseLayout>
